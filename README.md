@@ -24,7 +24,8 @@ that last line sets up a local branch called ex1 to track the remote branch of t
     "ax.grid()"
 ```
 and all those greater than/less than/equals symbols set off the conflict and also break JSON syntax.  So you can't look at this merged/conflicted notebook the way you normally do.
-7. Let's use Jupyterlabs built in git extensions to view and deal with the conflict.  First go to the far left of the window, and you will see a vertical stack of icons in a grey panel.  Click on the one that's a diamond with some lines inside it, that's the git panel. 
+
+7. Let's use Jupyterlab's built in git extensions to view and deal with the conflict.  First go to the far left of the window, and you will see a vertical stack of icons in a grey panel.  Click on the one that's a diamond with some lines inside it, that's the git panel. 
 8. Now you will see a set of panels, one of which shows Conflicted files... there it is Project.ipynb!  Double click to open a tool for resolving the conflict
 9. The tool shows 3 versions of the conflicted cell from left to right... the current (main), the most recent ancestor when both branches were the same, and the incoming branch (ex1). Underneath those 3 panels is a fourth panel... this is the one you edit to resolve the conflict
 10. Change the fourth panel to be whatever you want the end result to be. 
