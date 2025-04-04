@@ -6,15 +6,15 @@ This repo contains two branches: main and ex1. There is a single line text confl
 
 
 1. Clone this repo to your datahub or local computer. In a terminal window type `git clone https://github.com/COGS108/GitExercise_Conflicts.git`
-2. This clone only brings the main branch to your computer... we also need a local copy of the ex1 branch which you can get by typing the following two lines of code in the terminal (press return each time)
+2. This clone only brings the main branch to your computer... we also need a local copy of the ex1 branch which you can get by typing the following two lines of code in the terminal (press return each time)<br>
 `cd GitExercise_Conflicts`<br>
-`git checkout -b ex1 origin/ex1`
+`git checkout -b ex1 origin/ex1`<br>
 that last line sets up a local branch called ex1 to track the remote branch of the same name (origin is git's word for the remote repo)
 3. We want to merge ex1 into main, not the other way around! The merge command assumes the branch you're in right now is the destination, but the checkout command above put us on ex1.  Let's hop back to main to do this right... type `git checkout main`
 4. Ok now we have both branches locally, and we are ready to merge ex1 into main. Let's see what the difference between branches actually is.  Type `git diff ex1`
 5. Now merge ex1 into main by typing `git merge ex1` ... and yes it will give you the conflict message we expect
 6. Up to this point I very purposefully did NOT tell you to open Project.ipynb... if you try to double click on the notebook now you will get an error message telling you that file is NOT correct JSON. This is becuase the merge conflict has broken the syntax of a notebook file... a snippit of the file will at this moment look like:
-```python
+```JSON
     "ax.set(xlabel='time (s)', ylabel='voltage (mV)',\n",
 <<<<<<< HEAD
     "       title='The simplest plot in the world')\n",
