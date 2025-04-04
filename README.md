@@ -39,6 +39,7 @@ Congrats!! You've dealt with a VERY SIMPLE version of the notebook conflict prob
 And now you know why version control with notebooks is hard!  It would have been slightly easier with a normal set of .py files.  It could have been a lot harder if the notebooks involved hadn't had all their outputs cleared before commit.  When notebooks have metadata or binary data from the actual plot stored in the .ipynb file version control can be even more annyoing. 
 
 Ready to try a harder version of the merge?
+
 13. On main branch, open Project.ipynb as a notebook and select Run All.  Now save the notebook.
 14. Stage and commit the changes (you are storing the metadata and binaries fo the image in git)
 15. checkout the ex1 branch
