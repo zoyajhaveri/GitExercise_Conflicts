@@ -18,6 +18,7 @@ Here are step-by-step instructions assuming that you have logged in to Datahub t
 Part I - Make a local change on main
 -  Open `Project.ipynb`
 -  Just for fun, run both cells of the notebook to see the plot
+-  Unfortunately running the notebook changes the metadata stored inside it.  The counter for how many times a cell was run, the binary data from the plot.  This is stuff we do NOT want to version control... its not important and it clogs up the system because notebook metadata for plots can be very big. Before we do any git operations it is a best practice to click on the pulldown menu item `Edit -> Clear Outputs of All Cells`
 - Lets add a change: the last line of the notebook currently says `ax.grid()` which is bad Python form... yeah it works to turn on the grid lines of the plot implicitly, but it would be much more human readable if we used the more Pythonic `ax.grid('on')`.  Please make that change and don't forget to save the file when you are done!
 -  On the far left you will see a vertical stack of icons in a grey panel.  Click on the one that's a diamond with some lines inside it, that's the git panel.
 -  At the bottom of the git panel you can see there are three categories of files that could be the subject of git operations <br>
