@@ -1,48 +1,47 @@
 # GitExercise_Conflicts
 
-This exercise assumes you are using recent Jupyterlab with the git extension built on nbdime.  For this quarter in COGS108 those assumptions are true on Datahub. If you try this on your local computer this may or may not be true. If you are using VSCode on your local computer or something else entirely, there are other ways of doing these operations... you should figure it out yourself for whatever tools you like to use!
+This exercise assumes you are using recent COGS 108 Datahub setup (which is Jupyterlab with the git extension built on nbdime).  But you can do everything here using your own computer if you set it up with the same tools. If you are using git command line or VSCode, or something else entirely then you can still do this exercise, but the step by step insructions will need you to adapt them to your tools.  There is always more than one way to get something done, just learn and use the tool that you prefer!
 
-This repo contains two branches: main and ex1. There is a single line text conflict in one cell between the two branches. The goal is to merge branch ex1 into branch main.
+This repo contains two branches: main and ex1. There is a single line text conflict in one cell between the two branches. The goal of this exercise is 
+twofold; to learn how to stage and commit changes to a branch and then to learn how to merge the changes from one branch to another.
 
+We will do two seperate git operations 
+- add a new change to branch main, thus introducing a second difference with ex1 branch
+- then we will merge the changes from branch ex1 into main
 
-1. Clone this repo to your datahub or local computer. In a terminal window type `git clone https://github.com/COGS108/GitExercise_Conflicts.git`
-2. This clone only brings the main branch to your computer... we also need a local copy of the ex1 branch which you can get by typing the following two lines of code in the terminal (press return each time)<br>
-`cd GitExercise_Conflicts`<br>
-`git checkout -b ex1 origin/ex1`<br>
-that last line sets up a local branch called ex1 to track the remote branch of the same name (origin is git's word for the remote repo)
-3. We want to merge ex1 into main, not the other way around! The merge command assumes the branch you're in right now is the destination, but the checkout command above put us on ex1.  Let's hop back to main to do this right... type `git checkout main`
-4. Ok now we have both branches locally, and we are ready to merge ex1 into main. Let's see what the difference between branches actually is.  Type `git diff ex1`
-5. Now merge ex1 into main by typing `git merge ex1` ... and yes it will give you the conflict message we expect
-6. Up to this point I very purposefully did NOT tell you to open Project.ipynb... if you try to double click on the notebook now you will get an error message telling you that file is NOT correct JSON. This is becuase the merge conflict has broken the syntax of a notebook file... a snippit of the file will at this moment look like:
-```JSON
-    "ax.set(xlabel='time (s)', ylabel='voltage (mV)',\n",
-<<<<<<< HEAD
-    "       title='The simplest plot in the world')\n",
-=======
-    "       title='This plot is simple!')\n",
->>>>>>> ex1
-    "ax.grid()"
-```
-and all those greater than/less than/equals symbols set off the conflict and also break JSON syntax.  So you can't look at this merged/conflicted notebook the way you normally do.
+Here are step-by-step instructions assuming that you have logged in to Datahub to do this:
+- Use the file browser to make sure you are in a directory you are allowed to write new files to, e.g. the `private` directory inside your home directory.  Double click on the file browser to set your current working location to whatever is best for how you want to organize files.  Wherever you are in the file browser is where the new git repo will be created.
+-  On the far left you will see a vertical stack of icons in a grey panel.  Click on the one that's a diamond with some lines inside it, that's the git panel.
+-  Click the button "Clone a Repository" and use `https://github.com/COGS108/GitExercise_Conflicts.git` as the remote repo URL. Click the button that says `Clone`
+- Your new repository will appear in the file browser... double click on the new folder `GitExercise_Conflicts` to go inside and view the files!
 
-7. Let's use Jupyterlab's built in git extensions to view and deal with the conflict.  First go to the far left of the window, and you will see a vertical stack of icons in a grey panel.  Click on the one that's a diamond with some lines inside it, that's the git panel. 
-8. Now you will see a set of panels, one of which shows Conflicted files... there it is Project.ipynb!  Double click to open a tool for resolving the conflict
-9. The tool shows 3 versions of the conflicted cell from left to right... the current (main), the most recent ancestor when both branches were the same, and the incoming branch (ex1). Underneath those 3 panels is a fourth panel... this is the one you edit to resolve the conflict
-10. Change the fourth panel to be whatever you want the end result to be. 
-11. Click the "Mark as resolved" button the top right, now you will see Project.ipynb change from the Conflicted to Staged (the tool automagically did a `git add` for you)
-12. You can actually make the commit right underneat the Staged file... make sure to put a message in to the commit before you press the commit button!
-ommit the changes on e2
+Part I - Make a local change on main
+-  Open `Project.ipynb`
+-  Just for fun, run both cells of the notebook to see the plot
+- Lets add a change: the last line of the notebook currently says `ax.grid()` which is bad Python form... yeah it works to turn on the grid lines of the plot implicitly, but it would be much more human readable if we used the more Pythonic `ax.grid('on')`.  Please make that change and don't forget to save the file when you are done!
+-  On the far left you will see a vertical stack of icons in a grey panel.  Click on the one that's a diamond with some lines inside it, that's the git panel.
+-  At the bottom of the git panel you can see there are three categories of files that could be the subject of git operations <br>
+    "Untracked" for new files you create that are not yet in the repo  <br>
+    "Changed" for files already in the repo, but you changed something  <br>
+    "Staged" which tracks all the changes you've asked to be grouped together into a commit  <br>
+-  Look at the "Changed" section, `Project.ipynb` is there... hover your mouse over it.  You will see icons for opening the file, for making a diff summary of the changes, for discarding the changes, and one for staging the changes for a commit (a + symbol).  Stage the changes!
+-  Now that `Project.ipynb` is in the "Staged" category you can scroll down to the bottom of the git panel and commit the changes.  Add a summary (<50 characters), something like "improved code readability".  There is also a space for longer description if necessary.  Press the "Commit" button, and you're done with Part I!
+
+Part II - Merge ex1 into main
+-  On the git panel there's a place at the top where it says "Current Branch: main"; click on that menu item to see a list of all the branches available. When you cloned the repository you only got a copy of the default branch (called "main")... there were other branches but they are still only on the remote repo up on GitHub.  Remote branches are marked with the keyword "origin". So "main" is a local branch, "origin/main" is the main branch on GitHub and likewise "origin/ex1" is on Github.  Click on that last branch... 
+-  Previously you had only "origin/ex1" and not "ex1", but now you do!  By clicking on "origin/ex1" git made a local branch "ex1" and set it up to track the remote branch "origin/ex1".  Now that we have local copies of both main and ex1 we can merge the branches.  ex1 will be merged into main!
+-  OK here's the task: we want to merge the change in branch ex1 (a change of title on the graph) into main, erasing the old title.  But we want to keep our explicit `ax.grid('on')` change which is only on main and not ex1. 
+-  Here's how to do it... click on "main" to make sure we are currently on the main branch.  We want to be on the branch that is the destination of the merge.
+-  Hover over the local "ex1" branch and a button icon that looks like 3 dots with connecting lines will appear.. when you hover over the button it says "merge this branch into the current one"... go ahead and click it!
+-  You will get an error message "Failed to merge ex1 into main".  And now there is a new category "Conflicted" just above "Staged"!  Our file `Project.ipynb` is in that heading as expected!  Hover over the file, and click on the icon to "diff this file" that appears.
+-  You will now see the diff panel... where there are conflicts you have from left to right three possiblities: <br>
+    "Current" (what was in main before the merge) <br>
+    "Common Ancestor" (what the file looked like when ex1 split off from main) <br>
+    "Incoming" (what was in ex1 before the merge) <br>
+    Underneath the triple column you will see a panel where you can manually change the conflict zone to make the outcome what you want.  Whatever you put in this lower panel is what the outcome of the merge will be!
+- Make the outcome of the merge to be the ex1 title and the main ax.grid('on') command!  Save it by clicking the button on the top right that says "Mark as resolved". You will see that `Project.ipynb` moved from "Conflicted" to "Staged"
+- Go look at the notebook and make sure it is what you wanted it to be.  It is also useful at this stage to run-all to ensure that the Frankenstein's monster of code from both branches is actually functional as a combo.  You will get a warning that you have made changes that are unsaved because every time a notebook runs it changes metadata stored inside it. Ignore that... if you press save again you will add a new set of changes that need to be staged and committed, but those changes are USELESS... its just increments to the run counter of the cells and the exact binary data of the plot generated.
+- Let's commit the merge!  On the git panel give it a summary (something like "merged ex1 into main") and press the commit button.
    
 
-Congrats!! You've dealt with a VERY SIMPLE version of the notebook conflict problem. 
-
-And now you know why version control with notebooks is hard!  It would have been slightly easier with a normal set of .py files.  It could have been a lot harder if the notebooks involved hadn't had all their outputs cleared before commit.  When notebooks have metadata or binary data from the actual plot stored in the .ipynb file version control can be even more annyoing. 
-
-Ready to try a harder version of the merge?
-
-13. On main branch, open Project.ipynb as a notebook and select Run All.  Now save the notebook.
-14. Stage and commit the changes (you are storing the metadata and binaries fo the image in git)
-15. checkout the ex1 branch
-16. change the figuresize argument slightly
-17. run all, save, stage and commit on ex1.... the binary is now different on ex1 than on main
-18. attempt to merge ex1 into main again... this time with more annoying merge issues :)
+Congrats!! You've dealt with a simple version of the notebook conflict problem. This workflow will happen in your projects all the time, when person A and person B need to merge their seperate parts of the project together into the final project.
