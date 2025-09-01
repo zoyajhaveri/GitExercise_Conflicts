@@ -1,14 +1,29 @@
 # GitExercise_Conflicts
 
-This exercise assumes you are using recent COGS 108 Datahub setup (which is Jupyterlab with the git extension built on nbdime).  But you can do everything here using your own computer if you set it up with the same tools. If you are using git command line or VSCode, or something else entirely then you can still do this exercise, but the step by step insructions will need you to adapt them to your tools.  There is always more than one way to get something done, just learn and use the tool that you prefer!
+This exercise assumes you are using the COGS 108 Datahub setup.  But you can do everything here using your own computer if you set it up with the same tools (which is recent Jupyterlab with the git extension built on nbdime). If you are using git command line or VSCode, or something else entirely then you can still do this exercise, but the step by step insructions will need to be adapted to your tools.  There is always more than one way to get something done, just learn and use the tool that you prefer!
 
 This repo contains two branches: main and ex1. There is a single line text conflict in one cell between the two branches. The goal of this exercise is 
-twofold; to learn how to stage and commit changes to a branch and then to learn how to merge the changes from one branch to another.
+two-fold; to learn how to stage and commit changes to a branch and then to learn how to merge the changes from one branch to another.
+
+Below is a graph of the commit situation in the repo right now... the commits on each branch have produced a single line conflict you need to deal with before merging
+----*----*[main]
+     \
+      \----*[ex1]
 
 We will do two seperate git operations 
-- add a new change to branch main, thus introducing a second difference with ex1 branch
-- then we will merge the changes from branch ex1 into main
+- [Part 1] add a new change to branch main, thus introducing a second difference with ex1 branch
+- [Part 2] then we will merge the changes from branch ex1 into main
 
+Thus after Part 1 the new graph will look like
+----*----*----*[main]
+     \
+      \----*[ex1]
+
+And after Part 2 the new graph will look like
+----*----*----*----*[main]
+     \             /
+      \----*------/
+      
 Here are step-by-step instructions assuming that you have logged in to Datahub to do this:
 - Use the file browser to make sure you are in a directory you are allowed to write new files to, e.g. the `private` directory inside your home directory.  Double click on the file browser to set your current working location to whatever is best for how you want to organize files.  Wherever you are in the file browser is where the new git repo will be created.
 -  On the far left you will see a vertical stack of icons in a grey panel.  Click on the one that's a diamond with some lines inside it, that's the git panel.
