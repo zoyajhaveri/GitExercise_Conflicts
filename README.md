@@ -6,29 +6,42 @@ This repo contains two branches: main and ex1. There is a single line text confl
 two-fold; to learn how to stage and commit changes to a branch and then to learn how to merge the changes from one branch to another.
 
 Below is a graph of the commit situation in the repo right now... the commits on each branch have produced a single line conflict you need to deal with before merging
+
+```
 ----*----*[main]
      \
       \----*[ex1]
+```
 
 We will do two seperate git operations 
 - [Part 1] add a new change to branch main, thus introducing a second difference with ex1 branch
 - [Part 2] then we will merge the changes from branch ex1 into main
 
 Thus after Part 1 the new graph will look like
+
+```
 ----*----*----*[main]
      \
       \----*[ex1]
+```
 
 And after Part 2 the new graph will look like
+
+```
 ----*----*----*----*[main]
      \             /
       \----*------/
-      
-Here are step-by-step instructions assuming that you have logged in to Datahub to do this:
-- Use the file browser to make sure you are in a directory you are allowed to write new files to, e.g. the `private` directory inside your home directory.  Double click on the file browser to set your current working location to whatever is best for how you want to organize files.  Wherever you are in the file browser is where the new git repo will be created.
+```
+
+To work on this exercise:
+- Fork this repo by pressing the Fork button at the top of this webpage.  Forking this repo make a copy of this repo on YOUR github. You own this fork, you can change it however you like.
+- The original repo was at `https://github.com/COGS108/GitExercise_Conflicts.git`, your forked copy will be located at `https://github.com/your_username/GitExercise_Conflicts.git` where you must replace `your_username` with your actual GitHub username.
+- Note that the fork is a remote copy on GitHub... you will have to go to Datahub, login, and get a local copy of the fork (NOT the original) repo there.
+- Let's get that local copy... login to Datahub.
+- Use the Datahub file browser to make sure you are in a directory you are allowed to write new files to, e.g. the `private` directory inside your home directory.  Double click on the file browser to set your current working location to whatever is best for how you want to organize files.  Wherever you are in the file browser is where the new git repo will be created.
 -  On the far left you will see a vertical stack of icons in a grey panel.  Click on the one that's a diamond with some lines inside it, that's the git panel.
--  Click the button "Clone a Repository" and use `https://github.com/COGS108/GitExercise_Conflicts.git` as the remote repo URL. Click the button that says `Clone`
-- Your new repository will appear in the file browser... double click on the new folder `GitExercise_Conflicts` to go inside and view the files!
+-  Click the button "Clone a Repository" and set remote URL to `https://github.com/your_username/GitExercise_Conflicts.git` where you must replace `your_username` with your actual GitHub username. Click the button that says `Clone`
+- Your new local copy of the repository will appear in the file browser... double click on the new folder `GitExercise_Conflicts` to go inside and view the files!
 
 Part I - Make a local change on main
 -  Open `Project.ipynb`
@@ -59,5 +72,12 @@ Part II - Merge ex1 into main
 - Go look at the notebook and make sure it is what you wanted it to be.  It is also useful at this stage to run-all to ensure that the Frankenstein's monster of code from both branches is actually functional as a combo.  You will get a warning that you have made changes that are unsaved because every time a notebook runs it changes metadata stored inside it. Ignore that... if you press save again you will add a new set of changes that need to be staged and committed, but those changes are USELESS... its just increments to the run counter of the cells and the exact binary data of the plot generated.
 - Let's commit the merge!  On the git panel give it a summary (something like "merged ex1 into main") and press the commit button.
    
+Finally
+- All the changes you've made so far only exist in the local copy on Datahub. We need to push the changes from the local copy to your forked copy.
+- On the top left are a set of cloud icons, one with the arrow pointed down (that's pull) and one with the arrow pointed up (that's push).
+- If there's a red dot on one of the clouds you need to do that action.  In this case you only need to push. Once you've pushed your exercise is done... the changes you've made have appeared on GitHub and are visible to other people including our auto-grading scripts.
+  
+  
+Congrats!! You've dealt with a simple version of the notebook conflict problem. This workflow will happen in your projects all the time, when person A and person B need to merge their seperate parts of the project together into the final project. 
 
-Congrats!! You've dealt with a simple version of the notebook conflict problem. This workflow will happen in your projects all the time, when person A and person B need to merge their seperate parts of the project together into the final project.
+Another common project workflow is if there's a red dot on pull (down arrow) that means someone else made changes to the remote that you don't have.  Pull operations need to be done before push operations... so if someone changed the remote after your clone but before your push you will have to pull first, merge, and resolve any conflicts before you are allowed to push your changes to remote.  We didn't have to do that here, but its a very normal workflow for your projects.
