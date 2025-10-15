@@ -1,6 +1,6 @@
-# GitExercise_Conflicts
-
 MERGED EX1
+
+# GitExercise_Conflicts
 
 This exercise assumes you are using the COGS 108 Datahub setup.  But you can do everything here using your own computer if you set it up with the same tools (which is recent Jupyterlab with the git extension built on nbdime). If you are using git command line or VSCode, or something else entirely then you can still do this exercise, but the step by step insructions will need to be adapted to your tools.  There is always more than one way to get something done, just learn and use the tool that you prefer!
 
@@ -36,7 +36,8 @@ And after Part 2 the new graph will look like
 ```
 
 To work on this exercise:
-- Fork this repo by pressing the Fork button at the top of this webpage.  Forking this repo make a copy of this repo on YOUR github. You own this fork, you can change it however you like.
+- Fork this repo by pressing the Fork button at the top of this webpage.  When you fork it MAKE SURE you **UNCHECK** the default option to "Copy the main branch only". You want all the branches!
+-  Forking this repo made a copy of this repo on YOUR GitHub. You own this fork, you can change it however you like.
 - The original repo was at `https://github.com/COGS108/GitExercise_Conflicts.git`, your forked copy will be located at `https://github.com/your_username/GitExercise_Conflicts.git` where you must replace `your_username` with your actual GitHub username.
 - Note that the fork is a remote copy on GitHub... you will have to go to Datahub, login, and get a local copy of the fork (NOT the original) repo there.
 - Let's get that local copy... login to Datahub.
@@ -78,7 +79,7 @@ Finally
 - All the changes you've made so far only exist in the local copy on Datahub. We need to push the changes from the local copy to your forked copy.
 - On the top left are a set of cloud icons, one with the arrow pointed down (that's pull) and one with the arrow pointed up (that's push).
 - If there's a red dot on one of the clouds you need to do that action.  In this case you only need to push. Once you've pushed your exercise is done... the changes you've made have appeared on GitHub and are visible to other people including our auto-grading scripts.
-  
+- **IF YOU DON'T PUSH AT THE END OF THE EXERCISE YOU WILL LOSE POINTS ON THE AUTOGRADER** 
   
 Congrats!! You've dealt with a simple version of the notebook conflict problem. This workflow will happen in your projects all the time, when person A and person B need to merge their seperate parts of the project together into the final project. 
 
